@@ -1,9 +1,8 @@
-import { Dashboard } from "@mui/icons-material";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createMuiTheme, createTheme } from "@mui/material/styles";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
-import { Route,Routes } from "react-router-dom";
+import {BrowserRouter , Route,Routes, Navigate } from "react-router-dom";
 import { themeSettings } from "theme";
 import Layout from "scenes/layout";
 import Dashboard from "scenes/dashboard"
@@ -13,6 +12,7 @@ function App() {
   const theme=useMemo(()=>createTheme(themeSettings(mode)),[mode]);
   return (
     <div className="app">
+      <BrowserRouter>
       <ThemeProvider theme={theme}>
         <CssBaseline/>
         <Routes>
@@ -22,6 +22,8 @@ function App() {
           </Route>
         </Routes>
       </ThemeProvider>
+      </BrowserRouter>
+
     </div>
   );
 }
